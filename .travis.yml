@@ -15,3 +15,19 @@ before_install:
 # but tests never gets exited automatically, we have to use -- --coverage flag to get out
 script:
   - docker run -e CI=true anirudhapjoshi/docker-react npm run test -- --coverage
+
+# Travis CI comes with some pre-configured to deploy our application to a handfull of provider
+# such as AWS or digital ocian etc.
+# Reagion, AppName, env will get created while creating elasticbeanstalk instance
+# need to set of API keys which allows to access aws account over travis cli 
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react-app"
+  env: "DockerReactApp-env"
+  bucket_name: "elasticbeanstalk-us-east-2-042391297430"
+  bucket_path: "docker-react-app"
+  on:
+      branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
