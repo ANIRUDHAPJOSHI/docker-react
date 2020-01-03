@@ -14,4 +14,4 @@ before_install:
 # travis will wach output of each command and if it is other than 0 meains test failed
 # but tests never gets exited automatically, we have to use -- --coverage flag to get out
 script:
-  - docker run anirudhapjoshi/docker-react npm run test -- --coverage
+  - docker run -e CI=true anirudhapjoshi/docker-react npm run test -- --coverage
