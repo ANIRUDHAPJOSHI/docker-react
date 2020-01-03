@@ -8,7 +8,7 @@ services:
 # Series of commands which get executed before we deploye project or we run our test
 # 1. we want to build our image before running test
 before_install:
-  - docker build -t anirudhapjoshi/docker-react -f Dockerfile.dev .
+  - docker build -t anirudhapjoshi/docker-react -f dockerfile.dev .
 
 # Series of commands we need to run our test
 # travis will wach output of each command and if it is other than 0 meains test failed
